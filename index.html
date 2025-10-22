@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魏昆 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // 主色调：蓝色
+                        secondary: '#10B981', // 辅助色：绿色
+                        accent: '#8B5CF6', // 强调色：紫色
+                        dark: '#1F2937', // 深色文本
+                        light: '#F9FAFB', // 浅色背景
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            }
+            .animate-fadeIn {
+                animation: fadeIn 1s ease-in;
+            }
+            .animate-slideUp {
+                animation: slideUp 0.8s ease-out;
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { 
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-dark font-sans">
+    <!-- 顶部导航 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white text-shadow">魏昆</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-white hover:text-secondary transition-colors">关于我</a>
+                <a href="#skills" class="text-white hover:text-secondary transition-colors">技能</a>
+                <a href="#experience" class="text-white hover:text-secondary transition-colors">工作经历</a>
+                <a href="#projects" class="text-white hover:text-secondary transition-colors">项目经验</a>
+                <a href="#education" class="text-white hover:text-secondary transition-colors">教育背景</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#about" class="text-dark hover:text-primary transition-colors">关于我</a>
+                <a href="#skills" class="text-dark hover:text-primary transition-colors">技能</a>
+                <a href="#experience" class="text-dark hover:text-primary transition-colors">工作经历</a>
+                <a href="#projects" class="text-dark hover:text-primary transition-colors">项目经验</a>
+                <a href="#education" class="text-dark hover:text-primary transition-colors">教育背景</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="bg-gradient-blue min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-white opacity-10 rounded-full"></div>
+            <div class="absolute top-1/3 -left-20 w-64 h-64 bg-white opacity-10 rounded-full"></div>
+            <div class="absolute bottom-20 right-1/4 w-80 h-80 bg-white opacity-10 rounded-full"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-6 animate-fadeIn">
+                    魏昆
+                </h1>
+                <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-white/90 mb-8 animate-slideUp">
+                    iOS原生开发专家 | 跨平台解决方案工程师
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 animate-slideUp" style="animation-delay: 0.3s;">
+                    <a href="tel:16602125257" class="bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all shadow-lg flex items-center gap-2">
+                        <i class="fa fa-phone"></i> 联系我
+                    </a>
+                    <a href="#about" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i class="fa fa-user"></i> 了解更多
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+            <a href="#about" class="text-white text-3xl">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">关于我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">个人信息</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4">
+                            <span class="text-primary text-xl"><i class="fa fa-user-circle"></i></span>
+                            <span><strong class="block text-dark">姓名</strong> 魏昆</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-primary text-xl"><i class="fa fa-mars"></i></span>
+                            <span><strong class="block text-dark">性别</strong> 男</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-primary text-xl"><i class="fa fa-calendar"></i></span>
+                            <span><strong class="block text-dark">年龄</strong> 33岁</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-primary text-xl"><i class="fa fa-phone"></i></span>
+                            <span><strong class="block text-dark">电话</strong> 16602125257</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-primary text-xl"><i class="fa fa-envelope"></i></span>
+                            <span><strong class="block text-dark">邮箱</strong> 1747576433@qq.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">个人优势</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1"><i class="fa fa-check-circle"></i></span>
+                            <span>多年软件开发经验，精通<strong>iOS原生开发（Objective-C）</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1"><i class="fa fa-check-circle"></i></span>
+                            <span>熟悉<strong>前端与跨平台开发</strong>（Webview + HTML + JavaScript、Flutter、Uniapp、React等）</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1"><i class="fa fa-check-circle"></i></span>
+                            <span>项目涉及<strong>电商、企业信息化、金融支付</strong>等多个行业</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1"><i class="fa fa-check-circle"></i></span>
+                            <span>具备产品思维与项目管理能力，能独立开发或带领团队完成目标</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1"><i class="fa fa-check-circle"></i></span>
+                            <span>沟通能力强，责任心强</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">专业技能</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">多年技术积累，掌握多领域专业技能，擅长解决复杂技术问题</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- 技能卡片 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-primary text-2xl">
+                        <i class="fa fa-apple"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">iOS开发</h3>
+                    <p class="text-gray-600 text-sm">Objective-C</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4 text-indigo-500 text-2xl">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">跨平台开发</h3>
+                    <p class="text-gray-600 text-sm">Flutter, React Native, Uniapp</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500 text-2xl">
+                        <i class="fa fa-html5"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">前端开发</h3>
+                    <p class="text-gray-600 text-sm">HTML, JavaScript, WebView</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-500 text-2xl">
+                        <i class="fa fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">项目管理</h3>
+                    <p class="text-gray-600 text-sm">需求分析, 原型设计</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-500 text-2xl">
+                        <i class="fa fa-plug"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">蓝牙通信</h3>
+                    <p class="text-gray-600 text-sm">硬件交互</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500 text-2xl">
+                        <i class="fa fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">网络通信</h3>
+                    <p class="text-gray-600 text-sm">TCP/IP</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-500 text-2xl">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">桌面开发</h3>
+                    <p class="text-gray-600 text-sm">QT</p>
+                </div>
+                
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 text-teal-500 text-2xl">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">图像处理</h3>
+                    <p class="text-gray-600 text-sm">OpenCV</p>
+                </div>
+            </div>
+            
+            <!-- 技能关键词 -->
+            <div class="mt-16 bg-white p-8 rounded-2xl shadow-md">
+                <h3 class="text-xl font-semibold mb-6 text-center">技能关键词</h3>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn">iOS开发</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.1s;">Objective-C</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.2s;">Flutter</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.3s;">ReactNative</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.4s;">Uniapp</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.5s;">HTML</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.6s;">JavaScript</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.7s;">WebView</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.8s;">跨平台开发</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.9s;">蓝牙通信</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.0s;">TCP/IP</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.1s;">OpenCV</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.2s;">QT</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.3s;">项目管理</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.4s;">需求分析</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.5s;">原型设计</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.6s;">软考中级</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">工作经历</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- 工作经历卡片 -->
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">肉奇戊语（上海）食品有限公司</h3>
+                            <p class="text-lg font-medium mb-4">高级工程师</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>负责"格悦新能源APP"升级与迭代开发</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>参与需求分析与评审，输出可行性方案</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>优化产品细节，提升用户体验</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>参与研发计划制定与进度管理</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-40">
+                            <div class="bg-primary/10 text-primary font-medium py-2 px-4 rounded-lg inline-block">
+                                2024.04 - 2025.10
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">广州格悦新能源科技有限公司</h3>
+                            <p class="text-lg font-medium mb-4">iOS高级工程师</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>负责"格悦新能源APP"迭代开发</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>参与需求预研与功能设计</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>优化产品体验，参与进度把控</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-40">
+                            <div class="bg-primary/10 text-primary font-medium py-2 px-4 rounded-lg inline-block">
+                                2022.10 - 2024.03
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">广州市喜印喷墨技术有限公司</h3>
+                            <p class="text-lg font-medium mb-4">高级软件工程师</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>技术可行性分析与框架选型</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>客户需求沟通与需求文档编写</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>原型设计、UI设计、开发测试与发布维护</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>新技术学习与应用</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-40">
+                            <div class="bg-primary/10 text-primary font-medium py-2 px-4 rounded-lg inline-block">
+                                2020.03 - 2022.05
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">诺伯丝聚酿国际贸易（上海）有限公司</h3>
+                            <p class="text-lg font-medium mb-4">iOS研发工程师</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>负责"樽尚会APP"开发与维护</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>参与产品需求分析与原型设计</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>优化开发流程与规范</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-40">
+                            <div class="bg-primary/10 text-primary font-medium py-2 px-4 rounded-lg inline-block">
+                                2017.09 - 2019.12
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">上海睿民互联网科技有限公司</h3>
+                            <p class="text-lg font-medium mb-4">前端iOS工程师</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>主程开发APP核心功能</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>任务拆分、分配与进度跟踪</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-secondary text-lg mt-1"><i class="fa fa-angle-right"></i></span>
+                                    <span>参与产品需求研讨与原型设计</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-40">
+                            <div class="bg-primary/10 text-primary font-medium py-2 px-4 rounded-lg inline-block">
+                                2015.07 - 2017.07
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">项目经验</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 项目卡片 -->
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa fa-car text-white text-6xl opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="bg-primary/10 text-white font-medium py-1 px-3 rounded-lg inline-block mb-2">
+                                2022.10 - 2024.02
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">格悦新能源APP</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-semibold mb-3 text-primary">职责</h4>
+                        <p class="text-gray-700 mb-4">独立负责APP研发与迭代，跨平台Hybrid方案设计</p>
+                        <h4 class="text-lg font-semibold mb-3 text-primary">业绩</h4>
+                        <p class="text-gray-700">支持门店从3家扩展至18家，年销售额破十亿</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa fa-cogs text-white text-6xl opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="bg-primary/10 text-white font-medium py-1 px-3 rounded-lg inline-block mb-2">
+                                2020.03 - 2022.05
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">自研产品配套软件</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-semibold mb-3 text-primary">内容</h4>
+                        <ul class="space-y-2 text-gray-700 mb-4">
+                            <li>Windows端：QT框架，TCP/IP通信，OpenCV图像处理</li>
+                            <li>移动端：ReactNative/Flutter，蓝牙通信，颜色分析</li>
+                        </ul>
+                        <h4 class="text-lg font-semibold mb-3 text-primary">业绩</h4>
+                        <p class="text-gray-700">促成100万销售，完成SHEIN内供产品与上海参展项目</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa fa-cutlery text-white text-6xl opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="bg-primary/10 text-white font-medium py-1 px-3 rounded-lg inline-block mb-2">
+                                2017.10 - 2019.12
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">樽尚会（餐饮电商APP）</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-semibold mb-3 text-primary">技术</h4>
+                        <p class="text-gray-700 mb-4">Objective-C + WebView + H5 + JavaScript</p>
+                        <h4 class="text-lg font-semibold mb-3 text-primary">功能</h4>
+                        <p class="text-gray-700">在线订购、预订、支付、会员积分体系</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-red-500 to-pink-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fa fa-leaf text-white text-6xl opacity-20"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="bg-primary/10 text-white font-medium py-1 px-3 rounded-lg inline-block mb-2">
+                                2016.10 - 2017.02
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">AirProce 艾泊斯（空气净化器APP）</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-semibold mb-3 text-primary">技术</h4>
+                        <p class="text-gray-700">ReactNative、静态库封装、第三方支付对接</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景和证书 -->
+    <section id="education" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">教育背景</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- 教育背景 -->
+                <div>
+                    <div class="card-hover bg-light p-8 rounded-2xl shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold text-primary mb-6">教育经历</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-lg font-medium">华南师范大学</h4>
+                                    <span class="text-primary font-medium">本科（非全日制）</span>
+                                </div>
+                                <p class="text-gray-700">计算机科学与技术</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-lg font-medium">湖南软件职业技术大学</h4>
+                                    <span class="text-primary font-medium">大专</span>
+                                </div>
+                                <p class="text-gray-700">软件工程</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资格证书 -->
+                <div>
+                    <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                        <h3 class="text-2xl font-semibold text-primary mb-6">资格证书</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary text-xl">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <span>系统集成项目管理工程师（软考中级）</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-500 text-xl">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                                <span>普通话二级甲等</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section class="py-20 bg-gradient-blue text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">联系我</h2>
+                <div class="w-20 h-1 bg-white mx-auto"></div>
+            </div>
+            
+            <div class="max-w-md mx-auto">
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl">
+                    <div class="flex flex-col space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/80 text-sm">电话</p>
+                                <p class="text-xl font-medium">16602125257</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/80 text-sm">邮箱</p>
+                                <p class="text-xl font-medium">1747576433@qq.com</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <a href="mailto:1747576433@qq.com" class="block w-full bg-white text-primary py-3 px-6 rounded-lg font-medium text-center hover:bg-opacity-90 transition-all">
+                                发送邮件
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p class="mb-4">魏昆 - 个人简历网站</p>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-400 text-sm">© 2024 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark/90', 'backdrop-blur-md', 'shadow-md');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-dark/90', 'backdrop-blur-md', 'shadow-md');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // 移动端菜单
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // 元素进入视口时的动画
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card-hover');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate-fadeIn');
+                }
+            });
+        };
+
+        // 初始加载和滚动时触发动画
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
