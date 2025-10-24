@@ -42,28 +42,114 @@
             .bg-gradient-blue {
                 background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
             }
+            /* 动画基础类 - 默认隐藏元素，等待滚动触发 */
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            
+            /* 滚动触发后的显示状态 */
+            .animate-on-scroll.animated {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* 入场动画 - 淡入 */
             .animate-fadeIn {
                 opacity: 0;
-                animation: fadeIn 1s ease-in forwards;
+                animation: fadeIn 0.8s ease-out forwards;
             }
+            
+            /* 入场动画 - 上滑 */
             .animate-slideUp {
-                animation: slideUp 0.8s ease-out;
+                opacity: 0;
+                transform: translateY(30px);
+                animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             }
+            
+            /* 入场动画 - 放大 */
+            .animate-scale {
+                opacity: 0;
+                transform: scale(0.95);
+                animation: scale 0.6s ease-out forwards;
+            }
+            
+            /* 入场动画 - 从左滑入 */
+            .animate-slideLeft {
+                opacity: 0;
+                transform: translateX(-30px);
+                animation: slideLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            }
+            
+            /* 入场动画 - 从右滑入 */
+            .animate-slideRight {
+                opacity: 0;
+                transform: translateX(30px);
+                animation: slideRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            }
+            
+            /* 脉冲动画 */
             .animate-pulse-slow {
                 animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             }
+            
+            /* 悬停缩放效果 */
+            .hover-scale {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            
+            /* 关键帧定义 */
             @keyframes fadeIn {
                 from { opacity: 0; }
                 to { opacity: 1; }
             }
+            
             @keyframes slideUp {
                 from { 
                     opacity: 0;
-                    transform: translateY(20px);
+                    transform: translateY(30px);
                 }
                 to { 
                     opacity: 1;
                     transform: translateY(0);
+                }
+            }
+            
+            @keyframes scale {
+                from { 
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+                to { 
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            
+            @keyframes slideLeft {
+                from { 
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes slideRight {
+                from { 
+                    opacity: 0;
+                    transform: translateX(30px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateX(0);
                 }
             }
         }
@@ -138,7 +224,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-md animate-on-scroll hover-scale">
                     <h3 class="text-2xl font-semibold mb-6 text-primary">个人信息</h3>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-4">
@@ -164,7 +250,7 @@
                     </ul>
                 </div>
                 
-                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-md animate-on-scroll hover-scale">
                     <h3 class="text-2xl font-semibold mb-6 text-primary">个人优势</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
@@ -227,7 +313,7 @@
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- 技能卡片 -->
-                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-fadeIn">
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-on-scroll hover-scale">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-primary text-2xl">
                         <i class="fa fa-apple"></i>
                     </div>
@@ -243,7 +329,7 @@
                     <p class="text-gray-600 text-sm">Flutter, React Native, Uniapp</p>
                 </div>
                 
-                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-fadeIn">
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-on-scroll hover-scale">
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500 text-2xl">
                         <i class="fa fa-wechat"></i>
                     </div>
@@ -251,7 +337,7 @@
                     <p class="text-gray-600 text-sm">Taro、Uniapp</p>
                 </div>
                 
-                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-fadeIn">
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-on-scroll hover-scale">
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500 text-2xl">
                         <i class="fa fa-html5"></i>
                     </div>
@@ -259,7 +345,7 @@
                     <p class="text-gray-600 text-sm">Vue、React、JavaScript、TypeScript</p>
                 </div>
                 
-                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-fadeIn">
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-on-scroll hover-scale">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-500 text-2xl">
                         <i class="fa fa-tasks"></i>
                     </div>
@@ -277,7 +363,7 @@
                 
 
                 
-                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-fadeIn">
+                <div class="card-hover bg-white p-6 rounded-xl shadow-sm text-center animate-on-scroll hover-scale">
                     <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-500 text-2xl">
                         <i class="fa fa-desktop"></i>
                     </div>
@@ -298,21 +384,21 @@
             <div class="mt-16 bg-white p-8 rounded-2xl shadow-md">
                 <h3 class="text-xl font-semibold mb-6 text-center">技能关键词</h3>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn">iOS原生开发（Objective-C）</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.3s;">Uniapp</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.1s;">Flutter</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.2s;">ReactNative</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.4s;">微信小程序</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.5s;">跨平台开发</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.6s;">WebView Hybrid</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.3s;">WinForm</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.7s;">QT</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.8s;">上位机开发</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.3s;">Electron</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.3s;">敏捷开发</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 0.9s;">项目管理</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.0s;">产品思维</span>
-                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm animate-fadeIn" style="animation-delay: 1.1s;">软考中级</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">iOS原生开发（Objective-C）</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">Uniapp</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">Flutter</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">ReactNative</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">微信小程序</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">跨平台开发</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">WebView Hybrid</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">WinForm</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">QT</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">上位机开发</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">Electron</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">敏捷开发</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">项目管理</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">产品思维</span>
+                    <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm skill-tag">软考中级</span>
                 </div>
             </div>
         </div>
@@ -328,7 +414,7 @@
             
             <div class="space-y-12">
                 <!-- 工作经历卡片 -->
-                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-md animate-on-scroll hover-scale">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
                         <div class="flex-1">
                             <h3 class="text-2xl font-semibold text-primary mb-2">肉奇戊语（上海）食品有限公司</h3>
@@ -352,7 +438,7 @@
                     </div>
                 </div>
                 
-                <div class="card-hover bg-light p-8 rounded-2xl shadow-md">
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-md animate-on-scroll hover-scale">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
                         <div class="flex-1">
                             <h3 class="text-2xl font-semibold text-primary mb-2">广州格悦新能源科技有限公司</h3>
@@ -485,7 +571,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- 最新项目卡片 -->
-                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll hover-scale">
                     <div class="h-48 bg-gradient-to-r from-blue-500 to-cyan-500 relative">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fa fa-shopping-bag text-white text-6xl opacity-20"></i>
@@ -506,7 +592,7 @@
                 </div>
                 
                 <!-- 项目卡片 -->
-                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll hover-scale">
                     <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fa fa-car text-white text-6xl opacity-20"></i>
@@ -526,7 +612,7 @@
                     </div>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll hover-scale">
                     <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 relative">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fa fa-cogs text-white text-6xl opacity-20"></i>
@@ -549,7 +635,7 @@
                     </div>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="card-hover bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll hover-scale">
                     <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-600 relative">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fa fa-cutlery text-white text-6xl opacity-20"></i>
@@ -740,22 +826,71 @@
             });
         });
 
-        // 元素进入视口时的动画
+        // 元素进入视口时的动画 - 优化版
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.card-hover');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
+            // 获取所有需要滚动触发的元素
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            animatedElements.forEach((element, index) => {
+                // 如果元素已经有动画效果，跳过
+                if (element.classList.contains('animated')) return;
+                
+                // 获取元素位置信息
+                const elementPosition = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
                 
-                if (elementPosition < windowHeight - 100) {
-                    element.classList.add('animate-fadeIn');
+                // 当元素顶部进入视口底部100px时触发动画
+                const triggerPosition = windowHeight - 100;
+                
+                if (elementPosition.top < triggerPosition) {
+                    // 为每个元素添加交错延迟，创造流畅的动画序列
+                    const delay = index * 0.1; // 每个元素间隔100ms
+                    element.style.transitionDelay = `${delay}s`;
+                    
+                    // 添加动画类
+                    setTimeout(() => {
+                        element.classList.add('animated');
+                    }, 50); // 小延迟确保样式应用正确
+                }
+            });
+        };
+        
+        // 为技能标签添加交错动画
+        const animateSkillTags = () => {
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach((tag, index) => {
+                if (tag.classList.contains('animate-fadeIn')) return;
+                
+                const elementPosition = tag.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition.top < windowHeight - 100) {
+                    // 根据在DOM中的位置设置不同的延迟，使动画更自然
+                    setTimeout(() => {
+                        tag.classList.add('animate-fadeIn');
+                    }, index * 50); // 每个标签间隔50ms
                 }
             });
         };
 
         // 初始加载和滚动时触发动画
-        window.addEventListener('load', animateOnScroll);
-        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', () => {
+            // 页面加载时运行一次
+            animateOnScroll();
+            animateSkillTags();
+        });
+        
+        // 滚动时触发动画
+        window.addEventListener('scroll', () => {
+            // 使用节流函数优化性能
+            if (!window.scrollTimeout) {
+                window.scrollTimeout = setTimeout(() => {
+                    animateOnScroll();
+                    animateSkillTags();
+                    window.scrollTimeout = null;
+                }, 20); // 20ms的节流间隔
+            }
+        });
     </script>
 </body>
 </html>
